@@ -26,4 +26,5 @@
 
 ### Config ###
 *.yml
-application.properties
+*.properties
+*.yaml
