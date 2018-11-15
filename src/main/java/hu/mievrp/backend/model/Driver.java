@@ -13,8 +13,14 @@ public class Driver {
     @Column
     private String name;
 
-/*    @Column
-    private ArrayList<Vehicle> invoices = new ArrayList<Vehicle>();*/
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            inverseJoinColumns =
+                    @JoinColumn(name = "vehicle_id"),
+            joinColumns =
+                    @JoinColumn(name = "driver_id")
+    )
+    private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 
     public Long getId() {
         return id;
@@ -32,4 +38,11 @@ public class Driver {
         this.name = name;
     }
 
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(ArrayList<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
 }

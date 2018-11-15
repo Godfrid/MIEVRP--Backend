@@ -28,6 +28,7 @@ public class DriverService {
         return driverRepository.findById(id).map(this::toDto).orElse(null);
     }
 
+    @Transactional(readOnly = true)
     public List<DriverDTO> findAll() {
         return toDto(driverRepository.findAll());
     }
