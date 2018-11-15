@@ -1,21 +1,31 @@
-package hu.mievrp.backend.service.dto;
+package hu.mievrp.backend.model;
 
+
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
 
-public class VehicleDTO {
+@Entity
+@Table(name = "vehicle")
+public class Vehicle {
 
+    @Id
+    @GeneratedValue(strategy =  GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String plateNumber;
 
+    @Column
     private String type;
 
+    @Column
     private Integer EURClass;
 
+    @Column
     private Integer carryingCapacity;
 
-    private ArrayList<Long> driverIds = new ArrayList<>();
+    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY)
+    private ArrayList<Driver> drivers = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -57,11 +67,11 @@ public class VehicleDTO {
         this.carryingCapacity = carryingCapacity;
     }
 
-    public ArrayList<Long> getDriverIds() {
-        return driverIds;
+    public ArrayList<Driver> getDrivers() {
+        return drivers;
     }
 
-    public void setDriverIds(ArrayList<Long> driverIds) {
-        this.driverIds = driverIds;
+    public void setDrivers(ArrayList<Driver> drivers) {
+        this.drivers = drivers;
     }
 }
