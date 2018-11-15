@@ -1,5 +1,7 @@
 package hu.mievrp.backend.service.dto;
 
+import hu.mievrp.backend.service.DriverService;
+
 import java.util.ArrayList;
 
 public class DriverDTO {
@@ -32,4 +34,6 @@ public class DriverDTO {
     public void setVehicleIds(ArrayList<Long> vehicleIds) {
         this.vehicleIds = vehicleIds;
     }*/
+
 }
+

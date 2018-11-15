@@ -20,9 +20,6 @@ public class DriverService {
         this.driverRepository = driverRepository;
     }
 
-
-
-
     @Transactional(readOnly = true)
     public DriverDTO findOne(Long id) {
         return driverRepository.findById(id).map(this::toDto).orElse(null);
@@ -40,8 +37,6 @@ public class DriverService {
     public void delete(Long id) {
         driverRepository.deleteById(id);
     }
-
-
 
 
     public DriverDTO toDto(Driver driver) {

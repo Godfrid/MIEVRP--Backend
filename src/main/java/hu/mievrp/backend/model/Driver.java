@@ -13,8 +13,8 @@ public class Driver {
     @Column
     private String name;
 
-/*    @Column
-    private ArrayList<Vehicle> invoices = new ArrayList<Vehicle>();*/
+    @Column
+    private ArrayList<Vehicle> invoices = new ArrayList<Vehicle>();
 
     public Long getId() {
         return id;
