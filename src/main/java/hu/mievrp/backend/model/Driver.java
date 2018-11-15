@@ -1,6 +1,7 @@
 package hu.mievrp.backend.model;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -22,7 +23,7 @@ public class Driver {
             joinColumns =
                     @JoinColumn(name = "driver_id")
     )
-    private ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
 
     public Long getId() {
         return id;

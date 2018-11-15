@@ -3,6 +3,7 @@ package hu.mievrp.backend.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "vehicle")
@@ -25,7 +26,7 @@ public class Vehicle {
     private Integer carryingCapacity;
 
     @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY)
-    private ArrayList<Driver> drivers = new ArrayList<>();
+    private List<Driver> drivers = new ArrayList<>();
 
     public Long getId() {
         return id;
