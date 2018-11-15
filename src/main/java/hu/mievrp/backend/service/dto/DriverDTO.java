@@ -33,11 +33,7 @@ public class DriverDTO {
 
     public void setVehicleIds(ArrayList<Long> vehicleIds) {
         this.vehicleIds = vehicleIds;
-<<<<<<< HEAD
-    }*/
 
-=======
     }
->>>>>>> 4cb1144ecd12486094d3f97280f740a158da7483
 }
 
