@@ -7,7 +7,7 @@ public class DriverDTO {
 
     private String name;
 
-    private ArrayList<Long> vehicleIds = new ArrayList<>();
+   /* private ArrayList<Long> vehicleIds = new ArrayList<>();*/
 
     public Long getId() {
         return id;
@@ -25,11 +25,11 @@ public class DriverDTO {
         this.name = name;
     }
 
-    public ArrayList<Long> getVehicleIds() {
+/*    public ArrayList<Long> getVehicleIds() {
         return vehicleIds;
     }
 
     public void setVehicleIds(ArrayList<Long> vehicleIds) {
         this.vehicleIds = vehicleIds;
-    }
+    }*/
 }
