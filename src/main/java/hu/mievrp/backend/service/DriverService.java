@@ -14,6 +14,9 @@ import java.util.stream.Collectors;
 @Transactional
 public class DriverService {
 
+    @Autowired
+    VehicleService vehicleService;
+
     private final DriverRepository driverRepository;
 
     public DriverService(DriverRepository driverRepository) {
@@ -34,12 +37,15 @@ public class DriverService {
     }
 
     public DriverDTO save(DriverDTO driverDto) {
-        // driverRepository.save(toEntity(driverDto));
         return toDto(driverRepository.save(toEntity(driverDto)));
     }
 
     public void delete(Long id) {
         driverRepository.deleteById(id);
+    }
+
+    public Driver findOneDirect(Long id) {
+        driverRepository.findById(id);
     }
 
 
@@ -52,6 +58,8 @@ public class DriverService {
 
         driverDto.setId(driver.getId());
         driverDto.setName(driver.getName());
+        driverDto.setVehicleIds(driver.getVehicles().stream()
+                .map(vehicle -> vehicle.getId()).collect(Collectors.toList()));
 
         return driverDto;
     }
@@ -67,6 +75,8 @@ public class DriverService {
 
         driver.setId(driverDto.getId());
         driver.setName(driverDto.getName());
+        driver.setVehicles(driverDto.getVehicleIds().stream()
+                .map(vehicleId -> vehicleService.findOneDirect(vehicleId)).collect(Collectors.toList()));
 
         return driver;
     }
