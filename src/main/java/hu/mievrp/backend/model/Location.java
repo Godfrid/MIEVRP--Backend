@@ -1,15 +1,26 @@
-package hu.mievrp.backend.service.dto;
+package hu.mievrp.backend.model;
 
-public class LocationDTO {
+import javax.persistence.*;
 
+
+@Entity
+@Table(name= "location")
+public class Location {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String country;
 
+    @Column
     private String city;
 
+    @Column
     private Integer ZIP;
 
+    @Column
     private String address;
 
     public Long getId() {
@@ -52,3 +63,4 @@ public class LocationDTO {
         this.address = address;
     }
 }
+
