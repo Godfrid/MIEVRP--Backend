@@ -1,15 +1,26 @@
-package hu.mievrp.backend.service.dto;
+package hu.mievrp.backend.model;
 
-public class PartnerDTO {
+import javax.persistence.*;
 
+
+@Entity
+@Table(name="partner")
+public class Partner {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String name;
 
+    @Column
     private String email;
 
+    @Column
     private String phone;
 
+    @Column
     private String location;
 
     public Long getId() {

@@ -14,8 +14,6 @@ public class Driver {
     @Column
     private String name;
 
-
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             inverseJoinColumns =
@@ -41,7 +39,7 @@ public class Driver {
         this.name = name;
     }
 
-    public ArrayList<Vehicle> getVehicles() {
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
 
@@ -49,3 +47,4 @@ public class Driver {
         this.vehicles = vehicles;
     }
 }
+

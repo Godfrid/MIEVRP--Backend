@@ -68,7 +68,7 @@ public class Vehicle {
         this.carryingCapacity = carryingCapacity;
     }
 
-    public ArrayList<Driver> getDrivers() {
+    public List<Driver> getDrivers() {
         return drivers;
     }
 

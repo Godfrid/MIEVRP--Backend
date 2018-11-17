@@ -18,7 +18,7 @@ public class Location {
     private String city;
 
     @Column
-    private Integer ZIP;
+    private String ZIP;
 
     @Column
     private String address;
@@ -47,11 +47,11 @@ public class Location {
         this.city = city;
     }
 
-    public Integer getZIP() {
+    public String getZIP() {
         return ZIP;
     }
 
-    public void setZIP(Integer ZIP) {
+    public void setZIP(String ZIP) {
         this.ZIP = ZIP;
     }
 

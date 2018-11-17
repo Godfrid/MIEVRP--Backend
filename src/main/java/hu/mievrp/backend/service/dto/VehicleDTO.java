@@ -15,7 +15,7 @@ public class VehicleDTO {
 
     private Integer carryingCapacity;
 
-    private ArrayList<Long> driverIds = new ArrayList<>();
+    private List<Long> driverIds = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -57,11 +57,11 @@ public class VehicleDTO {
         this.carryingCapacity = carryingCapacity;
     }
 
-    public ArrayList<Long> getDriverIds() {
+    public List<Long> getDriverIds() {
         return driverIds;
     }
 
-    public void setDriverIds(ArrayList<Long> driverIds) {
+    public void setDriverIds(List<Long> driverIds) {
         this.driverIds = driverIds;
     }
 }

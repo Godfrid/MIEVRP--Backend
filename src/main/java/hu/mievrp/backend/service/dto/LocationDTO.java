@@ -8,7 +8,7 @@ public class LocationDTO {
 
     private String city;
 
-    private Integer ZIP;
+    private String ZIP;
 
     private String address;
 
@@ -36,11 +36,11 @@ public class LocationDTO {
         this.city = city;
     }
 
-    public Integer getZIP() {
+    public String getZIP() {
         return ZIP;
     }
 
-    public void setZIP(Integer ZIP) {
+    public void setZIP(String ZIP) {
         this.ZIP = ZIP;
     }
 

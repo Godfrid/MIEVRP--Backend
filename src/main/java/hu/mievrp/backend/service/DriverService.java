@@ -33,6 +33,11 @@ public class DriverService {
         return toDto(driverRepository.findAll());
     }
 
+    @Transactional(readOnly = true)
+    public Driver findOneDirect(Long id) {
+        return driverRepository.findById(id).orElse(null);
+    }
+
     public DriverDTO save(DriverDTO driverDto) {
         return toDto(driverRepository.save(toEntity(driverDto)));
     }
@@ -41,9 +46,6 @@ public class DriverService {
         driverRepository.deleteById(id);
     }
 
-    public Driver findOneDirect(Long id) {
-        driverRepository.findById(id);
-    }
 
 
     public DriverDTO toDto(Driver driver) {
@@ -71,7 +73,8 @@ public class DriverService {
         driver.setId(driverDto.getId());
         driver.setName(driverDto.getName());
         driver.setVehicles(driverDto.getVehicleIds().stream()
-                .map(vehicleId -> vehicleService.findOneDirect(vehicleId)).collect(Collectors.toList()));
+                .map(vehicleId -> vehicleService.findOneDirect(vehicleId))
+                .collect(Collectors.toList()));
 
         return driver;
     }
