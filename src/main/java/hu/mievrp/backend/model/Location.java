@@ -23,6 +23,10 @@ public class Location {
     @Column
     private String address;
 
+    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, optional = false)
+    @JoinColumn(name = "partner_id", nullable = false)
+    private Partner partner;
+
     public Long getId() {
         return id;
     }
@@ -61,6 +65,14 @@ public class Location {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Partner getPartner() {
+        return partner;
+    }
+
+    public void setPartner(Partner partner) {
+        this.partner = partner;
     }
 }
 

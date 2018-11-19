@@ -1,6 +1,8 @@
 package hu.mievrp.backend.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -20,8 +22,11 @@ public class Partner {
     @Column
     private String phone;
 
-    @Column
-    private String location;
+    @OneToMany(mappedBy = "partner", fetch = FetchType.LAZY)
+    private List<Location> locations = new ArrayList<>();
+
+    @OneToMany(mappedBy = "partner", fetch = FetchType.LAZY)
+    private List<Invoice> invoices = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -55,11 +60,19 @@ public class Partner {
         this.phone = phone;
     }
 
-    public String getLocation() {
-        return location;
+    public List<Location> getLocations() {
+        return locations;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 }

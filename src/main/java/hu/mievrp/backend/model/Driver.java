@@ -19,9 +19,8 @@ public class Driver {
             inverseJoinColumns =
                     @JoinColumn(name = "vehicle_id"),
             joinColumns =
-                    @JoinColumn(name = "driver_id")
-    )
-    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+                    @JoinColumn(name = "driver_id"))
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public Long getId() {
         return id;

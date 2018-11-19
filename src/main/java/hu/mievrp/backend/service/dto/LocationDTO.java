@@ -12,6 +12,8 @@ public class LocationDTO {
 
     private String address;
 
+    private Long partnerId;
+
     public Long getId() {
         return id;
     }
@@ -50,5 +52,13 @@ public class LocationDTO {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getParnterId() {
+        return partnerId;
+    }
+
+    public void setParnterId(Long parnterId) {
+        this.partnerId = parnterId;
     }
 }

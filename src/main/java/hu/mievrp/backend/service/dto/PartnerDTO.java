@@ -1,5 +1,8 @@
 package hu.mievrp.backend.service.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PartnerDTO {
 
     private Long id;
@@ -10,11 +13,11 @@ public class PartnerDTO {
 
     private String phone;
 
-    private String location;
+    private List<Long> locationIds = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
+    private List<Long> invoiceIds = new ArrayList<>();
+
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -44,11 +47,11 @@ public class PartnerDTO {
         this.phone = phone;
     }
 
-    public String getLocation() {
-        return location;
-    }
+    public List<Long> getLocationIds() { return locationIds; }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    public void setLocationIds(List<Long> locationIds) { this.locationIds = locationIds; }
+
+    public List<Long> getInvoiceIds() { return invoiceIds; }
+
+    public void setInvoiceIds(List<Long> invoiceIds) { this.invoiceIds = invoiceIds; }
 }

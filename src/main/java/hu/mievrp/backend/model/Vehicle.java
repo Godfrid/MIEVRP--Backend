@@ -25,7 +25,7 @@ public class Vehicle {
     @Column
     private Integer carryingCapacity;
 
-    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
     private List<Driver> drivers = new ArrayList<>();
 
     public Long getId() {

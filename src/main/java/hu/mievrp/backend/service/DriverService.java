@@ -1,6 +1,7 @@
 package hu.mievrp.backend.service;
 
 import hu.mievrp.backend.model.Driver;
+import hu.mievrp.backend.model.Vehicle;
 import hu.mievrp.backend.repository.DriverRepository;
 import hu.mievrp.backend.service.dto.DriverDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +56,9 @@ public class DriverService {
 
         driverDto.setId(driver.getId());
         driverDto.setName(driver.getName());
-        driverDto.setVehicleIds(driver.getVehicles().stream()
-                .map(vehicle -> vehicle.getId()).collect(Collectors.toList()));
+        driverDto.setVehicleIds(driver.getVehicles()
+                .stream().map(Vehicle::getId)
+                .collect(Collectors.toList()));
 
         return driverDto;
     }
@@ -72,8 +74,8 @@ public class DriverService {
 
         driver.setId(driverDto.getId());
         driver.setName(driverDto.getName());
-        driver.setVehicles(driverDto.getVehicleIds().stream()
-                .map(vehicleId -> vehicleService.findOneDirect(vehicleId))
+        driver.setVehicles(driverDto.getVehicleIds()
+                .stream().map(vehicleId -> vehicleService.findOneDirect(vehicleId))
                 .collect(Collectors.toList()));
 
         return driver;

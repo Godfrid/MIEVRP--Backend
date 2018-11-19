@@ -1,27 +1,47 @@
-package hu.mievrp.backend.service.dto;
+package hu.mievrp.backend.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FreightDTO {
+@Entity
+@Table(name= "freight")
+public class Freight {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String startingDate;
 
+    @Column
     private String finishingDate;
 
+    @Column
     private String completionDate;
 
+    @Column
     private Long startingKm;
 
+    @Column
     private Long finishingKm;
 
+    @Column
     private String startingPlace;
 
+    @Column
     private String finishingPlace;
 
-    private List<Long> invoiceIds = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            inverseJoinColumns =
+            @JoinColumn(name = "invoice_id"),
+            joinColumns =
+            @JoinColumn(name = "freight_id"))
+    private List<Invoice> invoices = new ArrayList<>();
 
+    @Column
     private String description;
 
     public Long getId() {
@@ -40,7 +60,9 @@ public class FreightDTO {
         this.startingDate = startingDate;
     }
 
-    public String getFinishingDate() { return finishingDate; }
+    public String getFinishingDate() {
+        return finishingDate;
+    }
 
     public void setFinishingDate(String finishingDate) {
         this.finishingDate = finishingDate;
@@ -56,19 +78,15 @@ public class FreightDTO {
 
     public Long getStartingKm() { return startingKm; }
 
-    public void setStartingKm(Long startingKm) {
-        this.startingKm = startingKm;
-    }
+    public void setStartingKm(Long startingKm) { this.startingKm = startingKm; }
 
-    public Long getFinishingKm() {
-        return finishingKm;
-    }
+    public Long getFinishingKm() { return finishingKm; }
 
-    public void setFinishingKm(Long finishingKm) {
-        this.finishingKm = finishingKm;
-    }
+    public void setFinishingKm(Long finishingKm) { this.finishingKm = finishingKm; }
 
-    public String getStartingPlace() { return startingPlace; }
+    public String getStartingPlace() {
+        return startingPlace;
+    }
 
     public void setStartingPlace(String startingPlace) {
         this.startingPlace = startingPlace;
@@ -82,12 +100,12 @@ public class FreightDTO {
         this.finishingPlace = finishingPlace;
     }
 
-    public List<Long> getInvoiceIds() {
-        return invoiceIds;
+    public List<Invoice> getInvoices() {
+        return invoices;
     }
 
-    public void setInvoiceIds(List<Long> invoiceIds) {
-        this.invoiceIds = invoiceIds;
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 
     public String getDescription() {

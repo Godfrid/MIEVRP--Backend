@@ -56,7 +56,8 @@ public class VehicleService {
         vehicleDTO.setEURClass(vehicle.getEURClass());
         vehicleDTO.setCarryingCapacity(vehicle.getCarryingCapacity());
         vehicleDTO.setDriverIds(vehicle.getDrivers()
-                    .stream().map(Driver::getId).collect(Collectors.toList()));
+                    .stream().map(Driver::getId)
+                    .collect(Collectors.toList()));
 
         return vehicleDTO;
     }
@@ -75,8 +76,8 @@ public class VehicleService {
         vehicle.setType(vehicleDTO.getType());
         vehicle.setEURClass(vehicleDTO.getEURClass());
         vehicle.setCarryingCapacity(vehicleDTO.getCarryingCapacity());
-        vehicle.setDrivers(vehicleDTO.getDriverIds().stream()
-                .map(driverId -> driverService.findOneDirect(driverId))
+        vehicle.setDrivers(vehicleDTO.getDriverIds()
+                .stream().map(driverId -> driverService.findOneDirect(driverId))
                 .collect(Collectors.toList()));
 
         return vehicle;
