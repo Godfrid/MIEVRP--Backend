@@ -35,7 +35,9 @@ public class VehicleService {
     }
 
     @Transactional(readOnly = true)
-    public Vehicle findOneDirect(Long id) { return vehicleRepository.findById(id).orElse(null); }
+    public Vehicle findOneDirect(Long id) {
+        return vehicleRepository.findById(id).orElse(null);
+    }
 
     public VehicleDTO save(VehicleDTO vehicleDto) {
         return toDto(vehicleRepository.save(toEntity(vehicleDto)));

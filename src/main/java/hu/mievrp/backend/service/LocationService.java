@@ -21,20 +21,32 @@ public class LocationService {
 
     private final LocationRepository locationRepository;
 
-    public LocationService(LocationRepository locationRepository) { this.locationRepository = locationRepository;}
+    public LocationService(LocationRepository locationRepository) {
+        this.locationRepository = locationRepository;
+    }
 
     @Transactional(readOnly = true)
-    public LocationDTO findOne(Long id) { return locationRepository.findById(id).map(this::toDto).orElse(null); }
+    public LocationDTO findOne(Long id) {
+        return locationRepository.findById(id).map(this::toDto).orElse(null);
+    }
 
     @Transactional(readOnly = true)
-    public List<LocationDTO> findAll() { return toDto(locationRepository.findAll()); }
+    public List<LocationDTO> findAll() {
+        return toDto(locationRepository.findAll());
+    }
 
     @Transactional(readOnly = true)
-    public Location findOneDirect(Long id) { return locationRepository.findById(id).orElse(null); }
+    public Location findOneDirect(Long id) {
+        return locationRepository.findById(id).orElse(null);
+    }
 
-    public LocationDTO save(LocationDTO locationDto) { return toDto(locationRepository.save(toEntity(locationDto))); }
+    public LocationDTO save(LocationDTO locationDto) {
+        return toDto(locationRepository.save(toEntity(locationDto)));
+    }
 
-    public void delete(Long id) { locationRepository.deleteById(id);}
+    public void delete(Long id) {
+        locationRepository.deleteById(id);
+    }
 
     public LocationDTO toDto(Location location) {
         if (location == null) return null;

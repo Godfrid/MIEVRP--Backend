@@ -19,7 +19,7 @@ public class Freight {
     private String finishingDate;
 
     @Column
-    private String completionDate;
+    private String fulfilmentDate;
 
     @Column
     private Long startingKm;
@@ -42,7 +42,7 @@ public class Freight {
     private List<Invoice> invoices = new ArrayList<>();
 
     @Column
-    private String description;
+    private String comment;
 
     public Long getId() {
         return id;
@@ -68,12 +68,12 @@ public class Freight {
         this.finishingDate = finishingDate;
     }
 
-    public String getCompletionDate() {
-        return completionDate;
+    public String getFulfilmentDate() {
+        return fulfilmentDate;
     }
 
-    public void setCompletionDate(String completionDate) {
-        this.completionDate = completionDate;
+    public void setFulfilmentDate(String fulfilmentDate) {
+        this.fulfilmentDate = fulfilmentDate;
     }
 
     public Long getStartingKm() { return startingKm; }
@@ -108,11 +108,11 @@ public class Freight {
         this.invoices = invoices;
     }
 
-    public String getDescription() {
-        return description;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

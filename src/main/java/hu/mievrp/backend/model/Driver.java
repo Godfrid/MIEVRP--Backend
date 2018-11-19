@@ -42,7 +42,7 @@ public class Driver {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<Vehicle> vehicles) {
+    public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 }

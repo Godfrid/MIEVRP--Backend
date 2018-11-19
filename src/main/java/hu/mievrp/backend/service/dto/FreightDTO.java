@@ -10,7 +10,7 @@ public class FreightDTO {
 
     private String finishingDate;
 
-    private String completionDate;
+    private String fulfilmentDate;
 
     private Long startingKm;
 
@@ -22,7 +22,7 @@ public class FreightDTO {
 
     private List<Long> invoiceIds = new ArrayList<>();
 
-    private String description;
+    private String comment;
 
     public Long getId() {
         return id;
@@ -46,12 +46,12 @@ public class FreightDTO {
         this.finishingDate = finishingDate;
     }
 
-    public String getCompletionDate() {
-        return completionDate;
+    public String getFulfilmentDate() {
+        return fulfilmentDate;
     }
 
-    public void setCompletionDate(String completionDate) {
-        this.completionDate = completionDate;
+    public void setFulfilmentDate(String fulfilmentDate) {
+        this.fulfilmentDate = fulfilmentDate;
     }
 
     public Long getStartingKm() { return startingKm; }
@@ -90,11 +90,11 @@ public class FreightDTO {
         this.invoiceIds = invoiceIds;
     }
 
-    public String getDescription() {
-        return description;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

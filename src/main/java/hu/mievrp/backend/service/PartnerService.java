@@ -24,20 +24,32 @@ public class PartnerService {
 
     private final PartnerRepository partnerRepository;
 
-    public PartnerService(PartnerRepository partnerRepository) { this.partnerRepository = partnerRepository; }
+    public PartnerService(PartnerRepository partnerRepository) {
+        this.partnerRepository = partnerRepository;
+    }
 
     @Transactional(readOnly = true)
-    public PartnerDTO findOne(Long id) { return partnerRepository.findById(id).map(this::toDto).orElse(null); }
+    public PartnerDTO findOne(Long id) {
+        return partnerRepository.findById(id).map(this::toDto).orElse(null);
+    }
 
     @Transactional(readOnly = true)
-    public List<PartnerDTO> findAll() { return toDto(partnerRepository.findAll()); }
+    public List<PartnerDTO> findAll() {
+        return toDto(partnerRepository.findAll());
+    }
 
     @Transactional(readOnly = true)
-    public Partner findOneDirect(Long id) { return partnerRepository.findById(id).orElse(null); }
+    public Partner findOneDirect(Long id) {
+        return partnerRepository.findById(id).orElse(null);
+    }
 
-    public PartnerDTO save(PartnerDTO partnerDto) { return toDto(partnerRepository.save(toEntity(partnerDto))); }
+    public PartnerDTO save(PartnerDTO partnerDto) {
+        return toDto(partnerRepository.save(toEntity(partnerDto)));
+    }
 
-    public void delete(Long id) { partnerRepository.deleteById(id);}
+    public void delete(Long id) {
+        partnerRepository.deleteById(id);
+    }
 
 
     public PartnerDTO toDto(Partner partner) {

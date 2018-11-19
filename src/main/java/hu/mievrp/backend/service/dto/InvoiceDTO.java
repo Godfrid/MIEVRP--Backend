@@ -7,11 +7,11 @@ public class InvoiceDTO {
 
     private Long id;
 
-    private Long netCost;
+    private Double netCost;
 
-    private Long grossCost;
+    private Double grossCost;
 
-    private Long VAT;
+    private Double VAT;
 
     private String currency;
 
@@ -27,17 +27,29 @@ public class InvoiceDTO {
 
     public void setId(Long id) { this.id = id; }
 
-    public Long getNetCost() { return netCost; }
+    public Double getNetCost() {
+        return netCost;
+    }
 
-    public void setNetCost(Long netCost) { this.netCost = netCost; }
+    public void setNetCost(Double netCost) {
+        this.netCost = netCost;
+    }
 
-    public Long getGrossCost() { return grossCost; }
+    public Double getGrossCost() {
+        return grossCost;
+    }
 
-    public void setGrossCost(Long grossCost) { this.grossCost = grossCost; }
+    public void setGrossCost(Double grossCost) {
+        this.grossCost = grossCost;
+    }
 
-    public Long getVAT() { return VAT; }
+    public Double getVAT() {
+        return VAT;
+    }
 
-    public void setVAT(Long VAT) { this.VAT = VAT; }
+    public void setVAT(Double VAT) {
+        this.VAT = VAT;
+    }
 
     public String getCurrency() { return currency; }
 

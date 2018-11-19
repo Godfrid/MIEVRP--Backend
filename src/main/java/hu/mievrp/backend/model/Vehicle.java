@@ -10,7 +10,7 @@ import java.util.List;
 public class Vehicle {
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
@@ -25,7 +25,7 @@ public class Vehicle {
     @Column
     private Integer carryingCapacity;
 
-    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany(mappedBy = "vehicles", fetch = FetchType.LAZY)
     private List<Driver> drivers = new ArrayList<>();
 
     public Long getId() {
@@ -72,7 +72,7 @@ public class Vehicle {
         return drivers;
     }
 
-    public void setDrivers(ArrayList<Driver> drivers) {
+    public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
     }
 }

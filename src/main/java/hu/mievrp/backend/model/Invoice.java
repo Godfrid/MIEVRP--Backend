@@ -13,14 +13,15 @@ public class Invoice {
     private Long id;
 
     @Column
-    private Long netCost;
+    private Double netCost;
 
     @Column
-    private Long grossCost;
+    private Double grossCost;
 
     @Column
-    private Long VAT;
+    private Double VAT;
 
+    @Column
     private String currency;
 
     @Column
@@ -29,11 +30,11 @@ public class Invoice {
     @Column
     private String fulfilmentDate;
 
-    @ManyToMany (mappedBy = "invoices", fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToMany (mappedBy = "invoices", fetch = FetchType.LAZY)
     private List<Freight> freights = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, optional = false)
-    @JoinColumn(name = "partner_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "partner_id")
     private Partner partner;
 
     public Long getId() {
@@ -44,27 +45,27 @@ public class Invoice {
         this.id = id;
     }
 
-    public Long getNetCost() {
+    public Double getNetCost() {
         return netCost;
     }
 
-    public void setNetCost(Long netCost) {
+    public void setNetCost(Double netCost) {
         this.netCost = netCost;
     }
 
-    public Long getGrossCost() {
+    public Double getGrossCost() {
         return grossCost;
     }
 
-    public void setGrossCost(Long grossCost) {
+    public void setGrossCost(Double grossCost) {
         this.grossCost = grossCost;
     }
 
-    public Long getVAT() {
+    public Double getVAT() {
         return VAT;
     }
 
-    public void setVAT(Long VAT) {
+    public void setVAT(Double VAT) {
         this.VAT = VAT;
     }
 

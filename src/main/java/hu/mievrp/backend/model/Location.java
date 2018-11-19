@@ -23,8 +23,8 @@ public class Location {
     @Column
     private String address;
 
-    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST}, optional = false)
-    @JoinColumn(name = "partner_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "partner_id")
     private Partner partner;
 
     public Long getId() {
