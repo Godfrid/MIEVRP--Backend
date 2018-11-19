@@ -1,6 +1,7 @@
 package hu.mievrp.backend.service;
 
 import hu.mievrp.backend.model.Driver;
+import hu.mievrp.backend.model.Vehicle;
 import hu.mievrp.backend.repository.DriverRepository;
 import hu.mievrp.backend.service.dto.DriverDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,11 @@ public class DriverService {
         return toDto(driverRepository.findAll());
     }
 
+    @Transactional(readOnly = true)
+    public Driver findOneDirect(Long id) {
+        return driverRepository.findById(id).orElse(null);
+    }
+
     public DriverDTO save(DriverDTO driverDto) {
         return toDto(driverRepository.save(toEntity(driverDto)));
     }
@@ -41,9 +47,6 @@ public class DriverService {
         driverRepository.deleteById(id);
     }
 
-    public Driver findOneDirect(Long id) {
-        driverRepository.findById(id);
-    }
 
 
     public DriverDTO toDto(Driver driver) {
@@ -53,8 +56,9 @@ public class DriverService {
 
         driverDto.setId(driver.getId());
         driverDto.setName(driver.getName());
-        driverDto.setVehicleIds(driver.getVehicles().stream()
-                .map(vehicle -> vehicle.getId()).collect(Collectors.toList()));
+        driverDto.setVehicleIds(driver.getVehicles()
+                .stream().map(Vehicle::getId)
+                .collect(Collectors.toList()));
 
         return driverDto;
     }
@@ -70,8 +74,9 @@ public class DriverService {
 
         driver.setId(driverDto.getId());
         driver.setName(driverDto.getName());
-        driver.setVehicles(driverDto.getVehicleIds().stream()
-                .map(vehicleId -> vehicleService.findOneDirect(vehicleId)).collect(Collectors.toList()));
+        driver.setVehicles(driverDto.getVehicleIds()
+                .stream().map(vehicleId -> vehicleService.findOneDirect(vehicleId))
+                .collect(Collectors.toList()));
 
         return driver;
     }

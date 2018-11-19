@@ -1,18 +1,31 @@
-package hu.mievrp.backend.service.dto;
+package hu.mievrp.backend.model;
 
-public class LocationDTO {
+import javax.persistence.*;
 
+
+@Entity
+@Table(name= "location")
+public class Location {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String country;
 
+    @Column
     private String city;
 
+    @Column
     private String ZIP;
 
+    @Column
     private String address;
 
-    private Long partnerId;
+    @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "partner_id")
+    private Partner partner;
 
     public Long getId() {
         return id;
@@ -54,11 +67,12 @@ public class LocationDTO {
         this.address = address;
     }
 
-    public Long getParnterId() {
-        return partnerId;
+    public Partner getPartner() {
+        return partner;
     }
 
-    public void setParnterId(Long parnterId) {
-        this.partnerId = parnterId;
+    public void setPartner(Partner partner) {
+        this.partner = partner;
     }
 }
+

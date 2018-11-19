@@ -14,16 +14,13 @@ public class Driver {
     @Column
     private String name;
 
-
-
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             inverseJoinColumns =
                     @JoinColumn(name = "vehicle_id"),
             joinColumns =
-                    @JoinColumn(name = "driver_id")
-    )
-    private List<Vehicle> vehicles = new ArrayList<Vehicle>();
+                    @JoinColumn(name = "driver_id"))
+    private List<Vehicle> vehicles = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -41,11 +38,12 @@ public class Driver {
         this.name = name;
     }
 
-    public ArrayList<Vehicle> getVehicles() {
+    public List<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<Vehicle> vehicles) {
+    public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
 }
+
