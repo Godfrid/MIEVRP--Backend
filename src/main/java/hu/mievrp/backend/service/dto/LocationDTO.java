@@ -14,6 +14,9 @@ public class LocationDTO {
 
     private Long partnerId;
 
+    // TODO: 1. TYPE OF LOCATION UN- /LOADING  or NEITHER; 2. SAVED/NOT SAVED. 3. MAYBE: COMMENT.
+
+
     public Long getId() {
         return id;
     }

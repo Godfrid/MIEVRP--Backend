@@ -30,12 +30,12 @@ public class FreightService {
         return freightRepository.findById(id).map(this::toDto).orElse(null);
     }
 
-    @Transactional
+    @Transactional (readOnly = true)
     public List<FreightDTO> findAll() {
         return toDto(freightRepository.findAll());
     }
 
-    @Transactional
+    @Transactional (readOnly = true)
     public Freight findOneDirect(Long id) {
         return freightRepository.findById(id).orElse(null);
     }
@@ -44,7 +44,9 @@ public class FreightService {
         return toDto(freightRepository.save(toEntity(freightDTO)));
     }
 
-    public void delete(Long id) { freightRepository.deleteById(id);}
+    public void delete(Long id) {
+        freightRepository.deleteById(id);
+    }
 
     public FreightDTO toDto(Freight freight) {
         if (freight == null) return null;
@@ -52,8 +54,8 @@ public class FreightService {
         FreightDTO freightDTO = new FreightDTO();
 
         freightDTO.setId(freight.getId());
-        freightDTO.setStartingDate(freight.getStartingDate());
-        freightDTO.setFinishingDate(freight.getFinishingDate());
+        freightDTO.setStartDate(freight.getStartDate());
+        freightDTO.setEndDate(freight.getEndDate());
         freightDTO.setFulfilmentDate(freight.getFulfilmentDate());
         freightDTO.setStartingKm(freight.getStartingKm());
         freightDTO.setFinishingKm(freight.getFinishingKm());
@@ -78,12 +80,13 @@ public class FreightService {
         Freight freight = new Freight();
 
         freight.setId(freightDTO.getId());
-        freight.setStartingDate(freightDTO.getStartingDate());
-        freight.setFinishingDate(freightDTO.getFinishingDate());
+        freight.setStartDate(freightDTO.getStartDate());
+        freight.setEndDate(freightDTO.getEndDate());
         freight.setFulfilmentDate(freightDTO.getFulfilmentDate());
         freight.setStartingKm(freightDTO.getStartingKm());
         freight.setFinishingKm(freightDTO.getFinishingKm());
-        freight.setStartingPlace(freightDTO.getFinishingPlace());
+        freight.setStartingPlace(freightDTO.getStartingPlace());
+        freight.setFinishingPlace(freightDTO.getFinishingPlace());
         freight.setInvoices(freightDTO.getInvoiceIds()
                 .stream().map(invoiceId -> invoiceService.findOneDirect(invoiceId))
                 .collect(Collectors.toList()));

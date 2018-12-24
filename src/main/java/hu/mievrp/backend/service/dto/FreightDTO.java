@@ -6,9 +6,9 @@ import java.util.List;
 public class FreightDTO {
     private Long id;
 
-    private String startingDate;
+    private String startDate;
 
-    private String finishingDate;
+    private String endDate;
 
     private String fulfilmentDate;
 
@@ -32,18 +32,18 @@ public class FreightDTO {
         this.id = id;
     }
 
-    public String getStartingDate() {
-        return startingDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartingDate(String startingDate) {
-        this.startingDate = startingDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getFinishingDate() { return finishingDate; }
+    public String getEndDate() { return endDate; }
 
-    public void setFinishingDate(String finishingDate) {
-        this.finishingDate = finishingDate;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getFulfilmentDate() {
@@ -54,7 +54,9 @@ public class FreightDTO {
         this.fulfilmentDate = fulfilmentDate;
     }
 
-    public Long getStartingKm() { return startingKm; }
+    public Long getStartingKm() {
+        return startingKm;
+    }
 
     public void setStartingKm(Long startingKm) {
         this.startingKm = startingKm;
@@ -68,7 +70,9 @@ public class FreightDTO {
         this.finishingKm = finishingKm;
     }
 
-    public String getStartingPlace() { return startingPlace; }
+    public String getStartingPlace() {
+        return startingPlace;
+    }
 
     public void setStartingPlace(String startingPlace) {
         this.startingPlace = startingPlace;

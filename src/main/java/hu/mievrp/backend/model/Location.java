@@ -27,6 +27,8 @@ public class Location {
     @JoinColumn(name = "partner_id")
     private Partner partner;
 
+    // TODO: 1. TYPE OF LOCATION UN- /LOADING  or NEITHER; 2. SAVED/NOT SAVED. 3. MAYBE: COMMENT.
+
     public Long getId() {
         return id;
     }

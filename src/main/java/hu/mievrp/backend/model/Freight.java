@@ -11,12 +11,12 @@ public class Freight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+// TODO: UNIQUE ID TO Generate and store catalog numbers(Inner reference).
+    @Column
+    private String startDate;
 
     @Column
-    private String startingDate;
-
-    @Column
-    private String finishingDate;
+    private String endDate;
 
     @Column
     private String fulfilmentDate;
@@ -52,20 +52,20 @@ public class Freight {
         this.id = id;
     }
 
-    public String getStartingDate() {
-        return startingDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStartingDate(String startingDate) {
-        this.startingDate = startingDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getFinishingDate() {
-        return finishingDate;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setFinishingDate(String finishingDate) {
-        this.finishingDate = finishingDate;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     public String getFulfilmentDate() {
