@@ -2,6 +2,7 @@ package hu.mievrp.backend.service;
 
 import hu.mievrp.backend.model.Freight;
 import hu.mievrp.backend.model.Invoice;
+import hu.mievrp.backend.model.Location;
 import hu.mievrp.backend.repository.FreightRepository;
 import hu.mievrp.backend.service.dto.FreightDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class FreightService {
 
     @Autowired
     InvoiceService invoiceService;
+
+    @Autowired
+    LocationService locationService;
 
     private final FreightRepository freightRepository;
 
@@ -59,8 +63,9 @@ public class FreightService {
         freightDTO.setFulfilmentDate(freight.getFulfilmentDate());
         freightDTO.setStartingKm(freight.getStartingKm());
         freightDTO.setFinishingKm(freight.getFinishingKm());
-        freightDTO.setStartingPlace(freight.getStartingPlace());
-        freightDTO.setFinishingPlace(freight.getFinishingPlace());
+        freightDTO.setLocationIds(freight.getLocations()
+                .stream().map(Location::getId)
+                .collect(Collectors.toList()));
         freightDTO.setInvoiceIds(freight.getInvoices()
                 .stream().map(Invoice::getId)
                 .collect(Collectors.toList()));
@@ -85,8 +90,9 @@ public class FreightService {
         freight.setFulfilmentDate(freightDTO.getFulfilmentDate());
         freight.setStartingKm(freightDTO.getStartingKm());
         freight.setFinishingKm(freightDTO.getFinishingKm());
-        freight.setStartingPlace(freightDTO.getStartingPlace());
-        freight.setFinishingPlace(freightDTO.getFinishingPlace());
+        freight.setLocations(freightDTO.getLocationIds()
+                .stream().map(locationId -> locationService.findOneDirect(locationId))
+                .collect(Collectors.toList()));
         freight.setInvoices(freightDTO.getInvoiceIds()
                 .stream().map(invoiceId -> invoiceService.findOneDirect(invoiceId))
                 .collect(Collectors.toList()));

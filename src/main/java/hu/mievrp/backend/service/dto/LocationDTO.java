@@ -1,5 +1,8 @@
 package hu.mievrp.backend.service.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LocationDTO {
 
     private Long id;
@@ -13,6 +16,8 @@ public class LocationDTO {
     private String address;
 
     private Long partnerId;
+
+    private List<Long> freightIds = new ArrayList<>();
 
     // TODO: 1. TYPE OF LOCATION UN- /LOADING  or NEITHER; 2. SAVED/NOT SAVED. 3. MAYBE: COMMENT.
 
@@ -57,11 +62,19 @@ public class LocationDTO {
         this.address = address;
     }
 
-    public Long getParnterId() {
+    public Long getPartnerId() {
         return partnerId;
     }
 
-    public void setParnterId(Long parnterId) {
-        this.partnerId = parnterId;
+    public void setPartnerId(Long partnerId) {
+        this.partnerId = partnerId;
+    }
+
+    public List<Long> getFreightIds() {
+        return freightIds;
+    }
+
+    public void setFreightIds(List<Long> freightIds) {
+        this.freightIds = freightIds;
     }
 }

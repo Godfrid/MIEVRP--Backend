@@ -1,6 +1,8 @@
 package hu.mievrp.backend.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -26,6 +28,10 @@ public class Location {
     @ManyToOne(fetch = FetchType.LAZY,  cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "partner_id")
     private Partner partner;
+
+    @ManyToMany (mappedBy = "locations", fetch = FetchType.LAZY)
+    private List<Freight> freights = new ArrayList<>();
+
 
     // TODO: 1. TYPE OF LOCATION UN- /LOADING  or NEITHER; 2. SAVED/NOT SAVED. 3. MAYBE: COMMENT.
 
@@ -75,6 +81,14 @@ public class Location {
 
     public void setPartner(Partner partner) {
         this.partner = partner;
+    }
+
+    public List<Freight> getFreights() {
+        return freights;
+    }
+
+    public void setFreights(List<Freight> freights) {
+        this.freights = freights;
     }
 }
 

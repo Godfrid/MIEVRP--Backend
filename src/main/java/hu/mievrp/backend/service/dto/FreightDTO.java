@@ -16,9 +16,7 @@ public class FreightDTO {
 
     private Long finishingKm;
 
-    private String startingPlace;
-
-    private String finishingPlace;
+    private List<Long> locationIds = new ArrayList<>();
 
     private List<Long> invoiceIds = new ArrayList<>();
 
@@ -70,20 +68,12 @@ public class FreightDTO {
         this.finishingKm = finishingKm;
     }
 
-    public String getStartingPlace() {
-        return startingPlace;
+    public List<Long> getLocationIds() {
+        return locationIds;
     }
 
-    public void setStartingPlace(String startingPlace) {
-        this.startingPlace = startingPlace;
-    }
-
-    public String getFinishingPlace() {
-        return finishingPlace;
-    }
-
-    public void setFinishingPlace(String finishingPlace) {
-        this.finishingPlace = finishingPlace;
+    public void setLocationIds(List<Long> locationIds) {
+        this.locationIds = locationIds;
     }
 
     public List<Long> getInvoiceIds() {

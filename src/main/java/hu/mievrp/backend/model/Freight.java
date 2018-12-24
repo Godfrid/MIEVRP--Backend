@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name= "freight")
+@Table(name = "freight")
 public class Freight {
 
     @Id
@@ -27,11 +27,13 @@ public class Freight {
     @Column
     private Long finishingKm;
 
-    @Column
-    private String startingPlace;
-
-    @Column
-    private String finishingPlace;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(
+            inverseJoinColumns =
+                    @JoinColumn(name = "location_id"),
+            joinColumns =
+                    @JoinColumn(name = "freight_id"))
+    private List<Location> locations = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
@@ -76,28 +78,28 @@ public class Freight {
         this.fulfilmentDate = fulfilmentDate;
     }
 
-    public Long getStartingKm() { return startingKm; }
-
-    public void setStartingKm(Long startingKm) { this.startingKm = startingKm; }
-
-    public Long getFinishingKm() { return finishingKm; }
-
-    public void setFinishingKm(Long finishingKm) { this.finishingKm = finishingKm; }
-
-    public String getStartingPlace() {
-        return startingPlace;
+    public Long getStartingKm() {
+        return startingKm;
     }
 
-    public void setStartingPlace(String startingPlace) {
-        this.startingPlace = startingPlace;
+    public void setStartingKm(Long startingKm) {
+        this.startingKm = startingKm;
     }
 
-    public String getFinishingPlace() {
-        return finishingPlace;
+    public Long getFinishingKm() {
+        return finishingKm;
     }
 
-    public void setFinishingPlace(String finishingPlace) {
-        this.finishingPlace = finishingPlace;
+    public void setFinishingKm(Long finishingKm) {
+        this.finishingKm = finishingKm;
+    }
+
+    public List<Location> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<Location> locations) {
+        this.locations = locations;
     }
 
     public List<Invoice> getInvoices() {

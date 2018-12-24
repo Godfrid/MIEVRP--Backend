@@ -40,6 +40,10 @@ public class PartnerService {
 
     @Transactional(readOnly = true)
     public Partner findOneDirect(Long id) {
+        if (id == null) {
+            return null;
+        }
+
         return partnerRepository.findById(id).orElse(null);
     }
 

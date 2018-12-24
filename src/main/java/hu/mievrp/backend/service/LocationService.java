@@ -1,5 +1,6 @@
 package hu.mievrp.backend.service;
 
+import hu.mievrp.backend.model.Freight;
 import hu.mievrp.backend.model.Location;
 import hu.mievrp.backend.model.Partner;
 import hu.mievrp.backend.repository.LocationRepository;
@@ -18,6 +19,9 @@ public class LocationService {
 
     @Autowired
     private PartnerService partnerService;
+
+    @Autowired
+    private FreightService freightService;
 
     private final LocationRepository locationRepository;
 
@@ -58,8 +62,14 @@ public class LocationService {
         locationDTO.setCity(location.getCity());
         locationDTO.setZIP(location.getZIP());
         locationDTO.setAddress(location.getAddress());
-        locationDTO.setParnterId(Optional.ofNullable(location.getPartner())
-                    .map(Partner::getId).orElse(null));
+        locationDTO.setPartnerId(Optional.ofNullable(location.getPartner())
+                    .map(Partner::getId)
+                    .orElse(null)
+        );
+        locationDTO.setFreightIds(location.getFreights()
+                .stream().map(Freight::getId)
+                .collect(Collectors.toList())
+        );
 
         return locationDTO;
     }
@@ -78,7 +88,14 @@ public class LocationService {
         location.setCity(locationDTO.getCity());
         location.setZIP(locationDTO.getZIP());
         location.setAddress(locationDTO.getAddress());
-        location.setPartner(partnerService.findOneDirect(locationDTO.getParnterId()));
+
+        //TODO: Handle null partner.
+        location.setPartner(partnerService.findOneDirect(locationDTO.getPartnerId()));
+        location.setFreights(locationDTO.getFreightIds()
+                .stream().map(locationId -> freightService.findOneDirect(locationId))
+                .collect(Collectors.toList())
+        );
+
 
         return location;
     }
